@@ -21,16 +21,7 @@ export default defineNuxtConfig({
 			},
 			"Golos Text": true,
 			Rubik: true,
-		},
-	},
-	app: {
-		pageTransition: {
-			name: "fade",
-			mode: "out-in", // default
-		},
-		layoutTransition: {
-			name: "slide",
-			mode: "out-in", // default
+			Unbounded: true,
 		},
 	},
 	css: ["animate.css", "~/assets/css/tailwind.css", "~/assets/css/style.css"],

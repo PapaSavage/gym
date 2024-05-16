@@ -1,6 +1,13 @@
 body {
 	font-family: Rubik;
-	background-color: #e6e7ea;
+	/* background-color: #e6e7ea; */
+	/* background-color: black; */
+}
+html {
+	width: 100vw;
+	scroll-behavior: smooth;
+
+	overflow-x: hidden;
 }
 .page-enter-active,
 .page-leave-active {
