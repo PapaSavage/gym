@@ -26,55 +26,54 @@
         <div class="subtitle">Абонементы</div>
 
         <div class="flex flex-wrap justify-center gap-5 ">
-            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
+
+            <div class="w-72 sm:w-96 h-72 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
                 <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
                 <div class="my-4">Неограниченное посещение зала;
                     Участие в групповых занятиях;
                     Индивидуальная программа.</div>
-                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                <div class="flex flex-row justify-end">
-                    <button class="btn__outlined w-full">Купить</button>
+                <div>
 
+                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                    <div class="flex flex-row justify-end">
+                        <button class="btn__outlined w-full">Купить</button>
+
+                    </div>
                 </div>
             </div>
-            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
+            <div class="w-72 sm:w-96 h-72 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
+                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
                 <div class="my-4">Неограниченное посещение зала;
                     Участие в групповых занятиях;
                     Индивидуальная программа.</div>
-                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                <div class="flex flex-row justify-end">
-                    <button class="btn__outlined w-full">Купить</button>
+                <div>
 
+                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                    <div class="flex flex-row justify-end">
+                        <button class="btn__outlined w-full">Купить</button>
+
+                    </div>
                 </div>
             </div>
-            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
-                <div class="my-4">Неограниченное посещение зала;
-                    Участие в групповых занятиях;
-                    Индивидуальная программа.</div>
-                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                <div class="flex flex-row justify-end">
-                    <button class="btn__outlined w-full">Купить</button>
 
-                </div>
-            </div>
-            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
-                <div class="my-4">Неограниченное посещение зала;
-                    Участие в групповых занятиях;
-                    Индивидуальная программа.</div>
-                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                <div class="flex flex-row justify-end">
-                    <button class="btn__outlined w-full">Купить</button>
-
-                </div>
-            </div>
         </div>
         <a name="trainers"></a>
 
         <div class="subtitle text-center">Наши тренеры</div>
         <div class="flex flex-wrap justify-center gap-5 ">
+            <div class="w-72 text-white bg-pale-sky-800 rounded-xl">
+                <div class="relative w-full h-72 rounded-lg mx-auto overflow-hidden">
+                    <img class="" src="/img/trainer.png" alt="">
+
+                </div>
+                <div class="p-5">
+                    <div class="text-xl font-bold pb-2">Иванов Иван Иванович</div>
+                    <div class="flex flex-row justify-end">
+                        <button
+                            class="transition duration-200 hover:scale-125 underline underline-offset-4">Записаться</button>
+                    </div>
+                </div>
+            </div>
             <div class="w-72 text-white bg-pale-sky-800 rounded-xl">
                 <div class="relative w-full h-72 rounded-lg mx-auto overflow-hidden">
                     <img class="" src="/img/trainer.png" alt="">
