@@ -12,41 +12,104 @@
                 человеку силу и
                 красоту, здоровье и уверенность в себе!</div>
             <div class="flex flex-row gap-5 tracking-normal">
-                <button class="btn__filled">Записаться</button>
+                <button class="btn__filled hover:scale-125">Записаться</button>
                 <button class="btn__outlined">Price</button>
             </div>
         </div>
-        <img src="/img/kachok.png" class="opacity-5 md:opacity-100 absolute top-0 h-full md:relative md:size-1/4" alt="" />
+        <img src="/img/kachok.png" class="opacity-5 md:opacity-100 absolute top-0 h-full md:relative md:size-1/4"
+            alt="" />
     </div>
-    <div class="mx-6 md:mx-24 lg:mx-36 xl:mx-64">
-        <div class="subtitle text-center">Абонементы</div>
-        <div class="flex flex-wrap justify-center gap-5">
-            <div class="w-96 bg-pale-sky-100">
-                <div>Абонемент "Старт"</div>
-                <div>200руб/мес</div>
-                <div>Неограниченное посещение зала;
-                    Участие в групповых занятиях;
-                    Индивидуальная программа.</div>
-                <button class="btn__outlined">Купить</button>
-            </div>
-            <div class="w-96 bg-pale-sky-100">
-                <div>Абонемент "Старт"</div>
-                <div>200руб/мес</div>
-                <div>Неограниченное посещение зала;
-                    Участие в групповых занятиях;
-                    Индивидуальная программа.</div>
-                <button class="btn__outlined">Купить</button>
-            </div>
-            <div class="w-96 bg-pale-sky-100">
-                <div>Абонемент "Старт"</div>
-                <div>200руб/мес</div>
-                <div>Неограниченное посещение зала;
-                    Участие в групповых занятиях;
-                    Индивидуальная программа.</div>
-                <button class="btn__outlined">Купить</button>
-            </div>
 
+    <a name="subscriptions"></a>
+    <div class="mx-6 md:mx-24 lg:mx-36">
+
+        <div class="subtitle">Абонементы</div>
+
+        <div class="flex flex-wrap justify-center gap-5 ">
+            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
+                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
+                <div class="my-4">Неограниченное посещение зала;
+                    Участие в групповых занятиях;
+                    Индивидуальная программа.</div>
+                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                <div class="flex flex-row justify-end">
+                    <button class="btn__outlined w-full">Купить</button>
+
+                </div>
+            </div>
+            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
+                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
+                <div class="my-4">Неограниченное посещение зала;
+                    Участие в групповых занятиях;
+                    Индивидуальная программа.</div>
+                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                <div class="flex flex-row justify-end">
+                    <button class="btn__outlined w-full">Купить</button>
+
+                </div>
+            </div>
+            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
+                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
+                <div class="my-4">Неограниченное посещение зала;
+                    Участие в групповых занятиях;
+                    Индивидуальная программа.</div>
+                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                <div class="flex flex-row justify-end">
+                    <button class="btn__outlined w-full">Купить</button>
+
+                </div>
+            </div>
+            <div class="w-96 bg-pale-sky-100 p-5 rounded-xl">
+                <div class="text-xl font-bold text-center">Абонемент "Старт"</div>
+                <div class="my-4">Неограниченное посещение зала;
+                    Участие в групповых занятиях;
+                    Индивидуальная программа.</div>
+                <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                <div class="flex flex-row justify-end">
+                    <button class="btn__outlined w-full">Купить</button>
+
+                </div>
+            </div>
         </div>
+        <a name="trainers"></a>
+
+        <div class="subtitle text-center">Наши тренеры</div>
+        <div class="flex flex-wrap justify-center gap-5 ">
+            <div class="w-72 text-white bg-pale-sky-800 rounded-xl">
+                <div class="relative w-full h-72 rounded-lg mx-auto overflow-hidden">
+                    <img class="" src="/img/trainer.png" alt="">
+
+                </div>
+                <div class="p-5">
+                    <div class="text-xl font-bold pb-2">Иванов Иван Иванович</div>
+                    <div class="flex flex-row justify-end">
+                        <button
+                            class="transition duration-200 hover:scale-125 underline underline-offset-4">Записаться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a name="classes"></a>
+        <div class="subtitle text-end">Групповые занятия</div>
+
+        <div class="flex flex-col">
+
+            <div class="flex flex-row gap-6 p-8 bg-pale-sky-200 rounded-3xl">
+                <div class="size-1/4">
+                    <img src="/img/trainer.png" class="" alt="">
+                </div>
+                <div class="grow flex flex-col gap-5">
+                    <div class="minititle">Аэробика</div>
+                    <div>Главный тренер: <span class="font-bold">Иванов Иван Иванович</span></div>
+                    <div>Неограниченное посещение зала</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subtitle text-center text-pale-sky-700">То, что делает нас <span
+                class="font-bold text-black">сильным</span>,
+            есть в каждом из нас</div>
+
     </div>
 </template>
 

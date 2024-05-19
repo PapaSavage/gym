@@ -47,3 +47,6 @@
 .subtitle {
 	@apply xl:text-6xl lg:text-4xl text-2xl uppercase my-10;
 }
+.minititle {
+	@apply xl:text-3xl lg:text-2xl text-xl uppercase;
+}

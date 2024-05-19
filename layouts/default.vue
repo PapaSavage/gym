@@ -1,4 +1,5 @@
 <template>
+    <a name="main"></a>
     <div class="flex flex-col min-h-screen">
         <menu
             class="flex flex-row justify-between items-center text-black px-10 md:mx-12 lg:mx-20 text-center animate__animated animate__fadeIn md:px-2 rounded-full sticky top-6 backdrop-blur-lg bg-white/30 z-40 py-4 mb-10">
@@ -17,13 +18,12 @@
                 </div>
             </NuxtLink>
             <div id="" class="lg:flex space-x-2 sm:space-x-8 items-center hidden md:text-md text-pale-sky-600">
-                <NuxtLink class="transition hover:text-pale-sky-800 duration-200" to="/">Главная
-                </NuxtLink>
-                <NuxtLink class="transition hover:text-pale-sky-800 duration-200" to="/subscriptions">Абонементы
-                </NuxtLink>
-                <NuxtLink class="transition hover:text-pale-sky-800 duration-200" to="/trainers">Тренера</NuxtLink>
-                <NuxtLink class="transition hover:text-pale-sky-800 duration-200 text-nowrap" to="/classes">Групповые
-                    занятия</NuxtLink>
+                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#main">Главная</a>
+                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200"
+                    href="#subscriptions">Абонементы</a>
+                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#trainers">Тренеры</a>
+                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200 no-wrap"
+                    href="#classes">Групповые занятия</a>
                 <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#contacts">Контакты</a>
             </div>
             <div class="">
