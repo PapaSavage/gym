@@ -28,16 +28,16 @@
             </div>
             <div class="">
                 <button
-                    class="hidden sm:block uppercase outline sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
+                    class="hidden sm:block uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
                     личный кабинет
                 </button>
                 <button
-                    class="flex sm:hidden items-center uppercase outline sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
+                    class="flex sm:hidden items-center uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
                     <UIcon name="i-heroicons-user" class="p-2.5 sm:p-4 m-2" />
                 </button>
             </div>
         </menu>
-        <div class="grow flex-1 w-full">
+        <div class="grow flex-1 w-full  unbounded-font">
             <slot />
         </div>
         <div class="border-t-2 mt-5 w-full">
