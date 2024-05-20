@@ -3,7 +3,7 @@
     <div class="flex flex-col min-h-screen">
         <menu
             class="flex flex-row justify-between items-center text-black px-10 md:mx-12 lg:mx-20 text-center animate__animated animate__fadeIn md:px-2 rounded-full sticky top-6 backdrop-blur-lg bg-white/30 z-40 py-4 mb-10">
-            <button class="block lg:hidden">
+            <button class="block md:hidden">
                 <sidebar></sidebar>
             </button>
             <NuxtLink href="/" class="flex flex-row items-center">

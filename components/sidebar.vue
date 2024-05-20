@@ -9,9 +9,9 @@
     }" v-model="isOpen" :transition="true">
         <div @click="closeOpen" class="flex flex-col justify-between h-full m-3 mx-3">
             <UVerticalNavigation class="" :ui="{
-                size: 'text-lg',
-                active: 'text-pale-sky-900 dark:text-white before:bg-pale-sky-100 dark:before:bg-pale-sky-800',
-            }" :links="links" />
+        size: 'text-lg',
+        active: 'text-pale-sky-900 dark:text-white before:bg-pale-sky-100 dark:before:bg-pale-sky-800',
+    }" :links="links" />
             <button type="submit"
                 class="h-9 text-white active:bg-pale-sky-900 hover:bg-pale-sky-800 bg-pale-sky-900 shadow-lg dark:shadow-neutral-700/50 text-black-700 font-semibold border-2 border-pale-sky-900 dark:border-neutral-100 hover:dark:bg-neutral-200 dark:bg-neutral-50 dark:text-black active:dark:bg-neutral-50 rounded-lg">
                 Выйти
