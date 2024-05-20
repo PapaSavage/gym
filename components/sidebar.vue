@@ -1,4 +1,12 @@
 <template>
+    <button @click="isOpen = true"
+        class="flex sm:hidden items-center uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
+        <UIcon name="i-heroicons-bars-3-16-solid" class="p-2.5 sm:p-4 m-2" />
+    </button>
+    <button @click="isOpen = true"
+        class="hidden sm:block uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
+        меню
+    </button>
     <USlideover side="left" :ui="{
         base: 'relative flex-1 flex flex-col w-full focus:outline-none',
         width: '',
@@ -18,14 +26,6 @@
             </button>
         </div>
     </USlideover>
-    <button @click="isOpen = true"
-        class="flex sm:hidden items-center uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
-        <UIcon name="i-heroicons-bars-3-16-solid" class="p-2.5 sm:p-4 m-2" />
-    </button>
-    <button @click="isOpen = true"
-        class="hidden sm:block uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
-        меню
-    </button>
 </template>
 <script setup lang="ts">
 const isOpen = ref(false);

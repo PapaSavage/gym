@@ -1,11 +1,11 @@
 <template>
     <a name="main"></a>
     <div class="flex flex-col min-h-screen">
-        <menu
-            class="flex flex-row justify-between items-center text-black px-10 md:mx-12 lg:mx-20 text-center animate__animated animate__fadeIn md:px-2 rounded-full sticky top-6 backdrop-blur-lg bg-white/30 z-40 py-4 mb-10">
-            <button class="block md:hidden">
+        <div
+            class="flex justify-between items-center text-black px-10 md:mx-12 lg:mx-20 text-center animate__animated animate__fadeIn md:px-2 rounded-full sticky top-6 backdrop-blur-lg bg-white/30 z-40 py-4 mb-10">
+            <!-- <button class="">
                 <sidebar></sidebar>
-            </button>
+            </button> -->
             <NuxtLink href="/" class="flex flex-row items-center">
                 <img class="" src="/img/logo.png" alt="картинка" style="width: 54px; height: 54px" />
                 <div class="mx-2">
@@ -18,25 +18,23 @@
                 </div>
             </NuxtLink>
             <div id="" class="lg:flex space-x-2 sm:space-x-8 items-center hidden md:text-md text-pale-sky-600">
-                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#main">Главная</a>
-                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200"
-                    href="#subscriptions">Абонементы</a>
-                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#trainers">Тренеры</a>
-                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200 no-wrap"
-                    href="#classes">Групповые занятия</a>
-                <a class="xl:block hidden transition hover:text-pale-sky-800 duration-200" href="#contacts">Контакты</a>
+                <a class="transition hover:text-pale-sky-800 duration-200" href="#main">Главная</a>
+                <a class="transition hover:text-pale-sky-800 duration-200" href="#subscriptions">Абонементы</a>
+                <a class="transition hover:text-pale-sky-800 duration-200" href="#trainers">Тренеры</a>
+                <a class="transition hover:text-pale-sky-800 duration-200 no-wrap" href="#classes">Групповые занятия</a>
+                <a class="transition hover:text-pale-sky-800 duration-200" href="#contacts">Контакты</a>
             </div>
             <div class="">
-                <button
+                <button @click="navigateTo('/login')"
                     class="hidden sm:block uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
                     личный кабинет
                 </button>
-                <button
+                <button @click="navigateTo('/login')"
                     class="flex sm:hidden items-center uppercase ring-2 ring-black ring-inset sm:p-2.5 hover:bg-black hover:text-white transition duration-150 font-bold active:bg-pale-sky-600 animate__animated hover:animate__fadeIn">
                     <UIcon name="i-heroicons-user" class="p-2.5 sm:p-4 m-2" />
                 </button>
             </div>
-        </menu>
+        </div>
         <div class="grow flex-1 w-full  unbounded-font">
             <slot />
         </div>
@@ -61,29 +59,11 @@
 const route = useRoute();
 console.log(route.path);
 import { ref } from "vue";
+
+const loginModalOpen = ref(false);
+const registrationModalOpen = ref(false);
+
+
 </script>
 
-<style scoped>
-a {
-    position: relative;
-}
-
-a::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 0.5px;
-    border-radius: 5px;
-    background-color: #18272f;
-    bottom: 0;
-    left: 0;
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-a:hover::before {
-    transform-origin: left;
-    transform: scaleX(1);
-}
-</style>
+<style scoped></style>

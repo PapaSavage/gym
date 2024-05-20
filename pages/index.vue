@@ -104,19 +104,20 @@
         <div class="subtitle text-end">Групповые занятия</div>
 
         <div class="flex flex-col">
-
-            <div class="flex flex-row gap-6 p-8 bg-pale-sky-200 rounded-3xl">
+            <div class="flex flex-col sm:flex-row gap-6 p-8 bg-pale-sky-200 rounded-3xl">
                 <div class="">
                     <img src="/img/trainer.png" class="" alt="">
                 </div>
                 <div class="flex flex-col gap-5">
                     <div class="minititle">Аэробика</div>
                     <div>Главный тренер: <span class="font-bold">Иванов Иван Иванович</span></div>
-                    <div>Неограниченное посещение зала dfasdf asdfj asdijgidfjsdigjoisdfgjoisdfgjsdfjg idfgjiosdfiogjsd
+                    <div class="text-ellipsis">Неограниченное посещение зала dfasdf asdfj
+                        asdijgidfjsdigjoisdfgjoisdfgjsdfjg idfgjiosdfiogjsd
                         ifjgiosdfjgijd sfiojgsd fjg idjfgi osdjfigj dsi jsfgj iosdjfigj sdofgj isdfgjiosdjf'gjsd fg
                         ajd'fgja dgj[sdfgjsdogjrosjh;gdfjgsdgnsdjfgnsd fgjsdnfhgnsrgo bnsob ] gfsdfdgdg</div>
                 </div>
             </div>
+
         </div>
 
         <div class="subtitle text-center text-pale-sky-700">То, что делает нас <span
@@ -127,25 +128,11 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-    layout: "default",
-});
+
 
 useHead({
     title: "Главная",
 });
 </script>
 
-<style scoped>
-.text-ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -moz-box;
-    -moz-box-orient: vertical;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    line-clamp: 3;
-    box-orient: vertical;
-}
-</style>
+<style scoped></style>

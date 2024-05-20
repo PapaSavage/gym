@@ -50,3 +50,38 @@
 .minititle {
 	@apply xl:text-3xl lg:text-2xl text-xl uppercase;
 }
+
+a {
+	position: relative;
+}
+
+a::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 0.5px;
+	border-radius: 5px;
+	background-color: #18272f;
+	bottom: 0;
+	left: 0;
+	transform-origin: right;
+	transform: scaleX(0);
+	transition: transform 0.3s ease-in-out;
+}
+
+a:hover::before {
+	transform-origin: left;
+	transform: scaleX(1);
+}
+
+.text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	line-clamp: 3;
+	box-orient: vertical;
+}
