@@ -60,6 +60,7 @@ import { z } from "zod";
 
 definePageMeta({
     layout: "logreg",
+    middleware: "already-logged-in",
 })
 
 useHead({ title: "Регистрация" });
@@ -78,14 +79,14 @@ const state = reactive({
     password: undefined,
 });
 
-// const { register } = actions();
+const { register } = actions();
 
-// const handleSubmit = async (event: FormSubmitEvent<any>, state: any) => {
+const handleSubmit = async (event: FormSubmitEvent<any>, state: any) => {
 
-//     try {
-//         await register(state.email, state.password, state.nickname);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+    try {
+        await register(state.email, state.password, state.nickname);
+    } catch (error) {
+        console.log(error);
+    }
+};
 </script>

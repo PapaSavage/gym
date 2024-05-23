@@ -55,8 +55,9 @@
 
 definePageMeta({
     layout: "logreg",
-    // middleware: "auth",
+    middleware: "already-logged-in",
 });
+
 
 useHead({
     title: "Авторизация",
@@ -76,13 +77,13 @@ const state = reactive({
     password: undefined,
 });
 
-// const { login } = actions();
+const { login } = actions();
 
-// const handleSubmit = async (event: FormSubmitEvent<any>, state: any) => {
-//     try {
-//         await login(state.email, state.password);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+const handleSubmit = async (event: FormSubmitEvent<any>, state: any) => {
+    try {
+        await login(state.email, state.password);
+    } catch (error) {
+        console.log(error);
+    }
+};
 </script>
