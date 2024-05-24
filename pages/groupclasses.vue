@@ -1,151 +1,111 @@
 <template>
-    <div class="h-screen p-2">
-        <div class="flex flex-row gap-1">
-            <!-- To-do -->
-            <div class="bg-white rounded px-2 py-2">
-                <!-- board category header -->
-                <div class="flex flex-row justify-between items-center mb-2 mx-1">
-                    <div class="flex items-center">
-                        <h2 class="bg-red-100 text-sm w-max px-1 rounded mr-2 text-gray-700">To-do</h2>
-                        <p class="text-gray-400 text-sm">3</p>
-                    </div>
+    <div class="lg:flex h-full lg:flex-col">
+        <header class="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
+            <h1 class="text-base font-semibold leading-6 text-gray-900">
+                <time datetime="2022-01">{{ currentMonth }}</time>
+            </h1>
+        </header>
+        <div class="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
+            <div
+                class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
+                <div class="flex justify-center bg-white py-2">
+                    <span>ПН</span>
                 </div>
-                <!-- board card -->
-                <div class="grid grid-rows-2 gap-2">
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Social media</h3>
-                        <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">2</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Review survey results</h3>
-                        <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">1</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Research video marketing</h3>
-                        <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">3</p>
-                    </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>ВТ</span>
+                </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>СР</span>
+                </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>ЧТ</span>
+                </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>ПТ</span>
+                </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>СБ</span>
+                </div>
+                <div class="flex justify-center bg-white py-2">
+                    <span>ВС</span>
                 </div>
             </div>
-
-            <!-- WIP Kanban -->
-            <div class="bg-white rounded px-2 py-2">
-                <!-- board category header -->
-                <div class="flex flex-row justify-between items-center mb-2 mx-1">
-                    <div class="flex items-center">
-                        <h2 class="bg-yellow-100 text-sm w-max px-1 rounded mr-2 text-gray-700">WIP</h2>
-                        <p class="text-gray-400 text-sm">2</p>
-                    </div>
-                </div>
-                <!-- board card -->
-                <div class="grid grid-rows-2 gap-2">
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Blog post live</h3>
-                        <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
-                        <p class="text-xs text-gray-500 mt-2">2</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Email campaign</h3>
-                        <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 21, 2019 &#10141; Jun 21, 2019</p>
-                        <p class="text-xs text-gray-500 mt-2">1</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Complete Kanban -->
-            <div class="bg-white rounded px-2 py-2">
-                <!-- board category header -->
-                <div class="flex flex-row justify-between items-center mb-2 mx-1">
-                    <div class="flex items-center">
-                        <h2 class="bg-green-100 text-sm w-max px-1 rounded mr-2 text-gray-700">Complete</h2>
-                        <p class="text-gray-400 text-sm">4</p>
-                    </div>``
-                </div>
-                <!-- board card -->
-                <div class="grid grid-rows-2 gap-2">
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Morning emails and to-do list</h3>
-                        <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
-                        <p class="text-xs text-gray-500 mt-2">1</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Blog post</h3>
-                        <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 20, 2019</p>
-                        <p class="text-xs text-gray-500 mt-2">5</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Reconcile accounts</h3>
-                        <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 19, 2019</p>
-                        <p class="text-xs text-gray-600 mt-2">4</p>
-                    </div>
-
-                    <div class="p-2 rounded shadow-sm border-gray-100 border-2">
-                        <h3 class="text-sm mb-3 text-gray-700">Website AB test</h3>
-                        <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-2">Jun 18, 2019</p>
-                        <p class="text-xs text-gray-600 mt-2">3</p>
-                    </div>
+            <div class="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
+                <div class="w-full grid grid-cols-7 grid-rows-6 gap-px">
+                    <template v-for="day in daysInMonth" :key="day">
+                        <a v-if="day" :class="[
+                            'relative py-2 px-3',
+                            day.getMonth() === currentDate.getMonth() ? 'bg-white' : 'bg-gray-50 text-gray-500',
+                            { 'hover:bg-gray-100': day.getMonth() === currentDate.getMonth() },
+                        ]">
+                            <time :datetime="formatDate(day)">{{ day.getDate() }}</time>
+                        </a>
+                    </template>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import { ref, computed } from "vue";
 
 definePageMeta({
     layout: "profile",
     middleware: "auth",
-})
+});
 
 useHead({ title: "Групповые занятия" });
 
+const currentDate = new Date();
+const monthNames = [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+];
+const currentMonth = monthNames[currentDate.getMonth()];
+
+const daysInMonth = ref([]);
+const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+let offset = firstDayOfMonth.getDay();
+
+if (offset === 0) {
+    offset = 6;
+} else {
+    offset -= 1;
+}
+
+const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+let previousMonthDays = getDaysInMonth(previousMonth.getFullYear(), previousMonth.getMonth());
+for (let i = offset; i > 0; i--) {
+    daysInMonth.value.push(new Date(previousMonth.getFullYear(), previousMonth.getMonth(), previousMonthDays - i + 1));
+}
+
+for (let i = 1; i <= getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth()); i++) {
+    daysInMonth.value.push(new Date(currentDate.getFullYear(), currentDate.getMonth(), i));
+}
+
+const nextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+for (let i = 1; daysInMonth.value.length < 42; i++) {
+    daysInMonth.value.push(new Date(nextMonth.getFullYear(), nextMonth.getMonth(), i));
+}
+
+function getDaysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
+function formatDate(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
 </script>
+
+<style scoped></style>

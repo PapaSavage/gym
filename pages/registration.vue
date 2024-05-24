@@ -1,6 +1,5 @@
 <template>
-
-    <UContainer class="flex flex-col justify-center items-center h-screen">
+    <UContainer class="flex flex-col justify-center items-center h-screen animate__animated animate__fadeIn">
         <div class="flex-col px-6"></div>
         <NuxtLink href="/" class="flex flex-row items-center">
             <img class="" src="/img/logo.png" alt="картинка" style="width: 54px; height: 54px" />
@@ -51,7 +50,6 @@
         </div>
 
     </UContainer>
-
 </template>
 
 <script setup lang="ts">

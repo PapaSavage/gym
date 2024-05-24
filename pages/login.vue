@@ -1,6 +1,5 @@
 <template>
-
-    <UContainer class="flex flex-col justify-center items-center h-screen">
+    <UContainer class="flex flex-col justify-center items-center h-screen animate__animated animate__fadeIn">
         <div class="flex-col px-6"></div>
         <NuxtLink href="/" class="flex flex-row items-center">
             <img class="" src="/img/logo.png" alt="картинка" style="width: 54px; height: 54px" />
@@ -24,9 +23,9 @@
                 <UFormGroup label="Электронная почта" name="email">
                     <UInput v-model="state.email" placeholder="example@domain.com" size="lg" color="pale-sky"
                         class="font-bold" :ui="{
-                placeholder:
-                    'placeholder-pale-sky-400 dark:placeholder-pale-sky-500',
-            }" />
+                            placeholder:
+                                'placeholder-pale-sky-400 dark:placeholder-pale-sky-500',
+                        }" />
                 </UFormGroup>
                 <UFormGroup label="Пароль" name="password">
                     <UInput v-model="state.password" type="password" placeholder="" size="lg" color="pale-sky"
@@ -48,7 +47,6 @@
         </div>
 
     </UContainer>
-
 </template>
 
 <script setup lang="ts">
