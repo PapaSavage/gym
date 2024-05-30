@@ -83,7 +83,7 @@ export const actions = () => {
 		try {
 			toast.add({
 				title: "Происходит попытка входа в систему.",
-				timeout: 2000,
+				timeout: 1000,
 				color: "pale-sky",
 				actions: [
 					{
