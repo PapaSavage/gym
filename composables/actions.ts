@@ -106,7 +106,7 @@ export const actions = () => {
 				title: "Поздравляю - вы авторизовались в системе.",
 				timeout: 1000,
 				callback: () => {
-					navigateTo("/home");
+					navigateTo("/soloclasses");
 				},
 				ui: { background: "bg-white dark:bg-neutral-900" },
 			});
