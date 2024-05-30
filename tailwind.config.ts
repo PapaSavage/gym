@@ -62,5 +62,6 @@ export default <Partial<Config>>{
 		`/Error.{js,ts,vue}`,
 		`/error.{js,ts,vue}`,
 		`/app.config.{js,ts}`,
+		"./node_modules/vue-tailwind-datepicker/**/*.js",
 	],
 };

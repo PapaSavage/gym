@@ -15,7 +15,7 @@
 	@apply text-sm uppercase text-white bg-pale-sky-800 p-4 ring-black transition duration-150 ring-inset;
 
 	&:hover {
-		@apply bg-white text-black ring-2;
+		@apply bg-transparent text-black ring-2;
 		animation-name: animate__fadeIn;
 	}
 
