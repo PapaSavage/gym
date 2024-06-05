@@ -40,6 +40,14 @@
 	animation: animate__animated;
 }
 
+.btn__simple {
+    @apply bg-black hover:bg-transparent text-white font-semibold hover:text-black py-2 px-4 border border-black rounded transition duration-150 active:bg-pale-sky-200;
+}
+
+.btn__simple_white {
+    @apply py-2 px-2 border shadow-sm rounded transition duration-150 active:bg-pale-sky-200 hover:bg-pale-sky-100;
+}
+
 .title {
 	@apply xl:text-9xl lg:text-8xl text-6xl;
 }
@@ -49,6 +57,10 @@
 }
 .minititle {
 	@apply xl:text-3xl lg:text-2xl text-xl uppercase;
+}
+
+.grid__card {
+    @apply border p-5 rounded-xl shadow-xl m-5 flex flex-col items-start;
 }
 
 .text-ellipsis {

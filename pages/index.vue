@@ -12,7 +12,7 @@
                 человеку силу и
                 красоту, здоровье и уверенность в себе!</div>
             <div class="flex flex-row gap-5 tracking-normal">
-                <button class="btn__filled hover:scale-125">Записаться</button>
+                <button @click="navigateTo('/login')" class="btn__filled hover:scale-125">Записаться</button>
                 <button class="btn__outlined">Price</button>
             </div>
         </div>
@@ -26,56 +26,14 @@
         <div class="subtitle">Абонементы</div>
 
         <div class="flex flex-wrap justify-center gap-5 ">
-
-            <div class="w-80 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
-                <div class="my-4 text-ellipsis">dfalspdflaspdgas dlfpsdlf palspdf lapsdf palsdf plasd fpldaspf lpdsf
-                    lapsdflp
-                </div>
+            <div class="w-80 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl"
+                v-for="desc in descriptions.results">
+                <div class="text-xl font-bold text-center border-b-2 pb-3">{{ desc.name }}</div>
+                <div class="my-4 text-ellipsis">{{ desc.description }}</div>
                 <div>
-
-                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
+                    <div class="pb-5"><span class="font-bold text-xl">{{ desc.price }}</span>руб/мес</div>
                     <div class="flex flex-row justify-end">
-                        <button class="btn__outlined w-full">Купить</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="w-80 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
-                <div class="my-4 test">dfalspdflaspdgas dlfpsdlf palspdf lapsdf palsdf plasd fpldaspf lpdsf lapsdflp
-                </div>
-                <div>
-
-                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                    <div class="flex flex-row justify-end">
-                        <button class="btn__outlined w-full">Купить</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="w-80 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
-                <div class="my-4 test">dfalspdflaspdgas dlfpsdlf palspdf lapsdf palsdf plasd fpldaspf lpdsf lapsdflp
-                </div>
-                <div>
-
-                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                    <div class="flex flex-row justify-end">
-                        <button class="btn__outlined w-full">Купить</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="w-80 flex flex-col justify-between bg-pale-sky-100 p-5 rounded-xl">
-                <div class="text-xl font-bold text-center border-b-2 pb-3">Абонемент "Старт"</div>
-                <div class="my-4 test">dfalspdflaspdgas dlfpsdlf palspdf lapsdf palsdf plasd fpldaspf lpdsf lapsdflp
-                </div>
-                <div>
-
-                    <div class="pb-5"><span class="font-bold text-xl">200</span>руб/мес</div>
-                    <div class="flex flex-row justify-end">
-                        <button class="btn__outlined w-full">Купить</button>
+                        <button @click="navigateTo('/login')" class="btn__outlined w-full">Купить</button>
 
                     </div>
                 </div>
@@ -86,13 +44,12 @@
 
         <div class="subtitle text-center">Наши тренеры</div>
         <div class="flex flex-wrap justify-center gap-5 ">
-            <div class="w-72 text-white bg-pale-sky-800 rounded-xl">
+            <div class="w-72 text-white bg-pale-sky-800 rounded-xl" v-for="trainer in trainers.results">
                 <div class="relative w-full h-72 rounded-lg mx-auto overflow-hidden">
-                    <img class="" src="/img/trainer.png" alt="">
-
+                    <img class="" :src="trainer.photo" alt="">
                 </div>
                 <div class="p-5">
-                    <div class="text-xl font-bold pb-2">Иванов Иван Иванович</div>
+                    <div class="text-xl font-bold pb-2">{{ trainer.fio }}</div>
                     <div class="flex flex-row justify-end">
                         <button
                             class="transition duration-200 hover:scale-125 underline underline-offset-4 active:text-pale-sky-300">Записаться</button>
@@ -124,14 +81,84 @@
                 class="font-bold text-black">сильным</span>,
             есть в каждом из нас</div>
 
+
     </div>
+    <!-- <img src="~/assets/img/trainer.png" alt=""> -->
 </template>
 
 <script setup lang="ts">
 
+import { API } from '~/plugins/axios.js';
+
 useHead({
     title: "Главная",
 });
+
+interface Description {
+    subscriptionid: number;
+    name: string;
+    description: string;
+    price: number;
+    duration: number;
+    type: string;
+    countclasses: number;
+}
+
+interface Trainer {
+    trainerId: number;
+    fio: string;
+    telephone: string;
+    email: string;
+    photo: string;
+}
+
+interface trainer {
+    results: Trainer[];
+}
+
+interface description {
+    results: Description[];
+}
+
+const descriptions = ref<description>({
+    results: []
+});
+
+const trainers = ref<trainer>({
+    results: []
+});
+
+get_data_subs();
+get_data_trainers();
+
+function get_data_subs() {
+    API.get('Subscriptions')
+        .then(response => {
+            descriptions.value.results = response.data;
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
+}
+
+function get_data_trainers() {
+    API.get('Trainers')
+        .then(response => {
+            trainers.value.results = response.data;
+            for (let i = 0; i < trainers.value.results.length; i++) {
+                trainers.value.results[i].photo = '/img/trainers/' + trainers.value.results[i].trainerId + '.png'
+            }
+            console.log(trainers.value.results);
+
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
+}
+
+
+
+
 </script>
 
 <style scoped></style>

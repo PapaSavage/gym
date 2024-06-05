@@ -2,7 +2,7 @@
     <div class="flex h-screen unbounded-font">
         <sidebarprof></sidebarprof>
 
-        <div class="overflow-y-auto grow">
+        <div class="overflow-y-auto grow ">
             <slot />
 
         </div>

@@ -1,46 +1,146 @@
 <template>
-    <div class="lg:flex h-full lg:flex-col">
-        <header class="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
-            <h1 class="text-base font-semibold leading-6 text-gray-900">
-                <time datetime="2022-01">{{ currentMonth }}</time>
-            </h1>
-        </header>
-        <div class="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
-            <div
-                class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
-                <div class="flex justify-center bg-white py-2">
-                    <span>ПН</span>
+    <div
+        class="flex items-center flex-col xl:flex-row md:justify-around py-8 px-4 h-screen animate__animated animate__fadeIn">
+        <div class="flex flex-col justify-between">
+            <div class="text-center text-2xl pb-3">Тренировки, на которые вы записаны</div>
+            <table class="w-full text-sm bg-white shadow-md rounded mb-4">
+                <tbody>
+                    <tr class="border-b">
+                        <th class="text-left p-3 px-5">Name</th>
+                        <th class="text-left p-3 px-5">Time</th>
+                    </tr>
+                    <tr v-for="person in peoples" :key="person.id" class="border-b hover:bg-pale-sky-100">
+                        <td class="p-3 px-5">{{ person.trainer }}</td>
+                        <td class="p-3 px-5">{{ person.time }}</td>
+                        <td class="p-3 px-5">
+                            <button type="button"
+                                class="bg-black hidden sm:block hover:bg-transparent text-white font-semibold hover:text-black py-2 px-4 border border-black rounded transition duration-150 active:bg-pale-sky-200">
+                                Отменить
+                            </button>
+                            <button type="button"
+                                class="bg-black text-xs  block sm:hidden hover:bg-transparent text-white font-semibold hover:text-black py-2 px-3 border border-black rounded transition duration-150 active:bg-pale-sky-200">
+                                x
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="max-w-sm w-full shadow-lg my-10">
+            <div class="p-4 dark:bg-gray-800 bg-white rounded-t">
+                <div class="px-4 flex items-center justify-between">
+                    <span tabindex="0" class="focus:outline-none text-base font-bold dark:text-gray-100 text-gray-800">
+                        {{ monthName }} {{ year }}
+                    </span>
+                    <div class="flex items-center">
+                        <button aria-label="calendar backward"
+                            class="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100"
+                            @click="prevMonth">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="15 6 9 12 15 18" />
+                            </svg>
+                        </button>
+                        <button aria-label="calendar forward"
+                            class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100"
+                            @click="nextMonth">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="9 6 15 12 9 18" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>ВТ</span>
-                </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>СР</span>
-                </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>ЧТ</span>
-                </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>ПТ</span>
-                </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>СБ</span>
-                </div>
-                <div class="flex justify-center bg-white py-2">
-                    <span>ВС</span>
+                <div class="flex items-center justify-between pt-5 overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">ПН
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">ВТ
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">СР
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">ЧТ
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">ПТ
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">СБ
+                                        </p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="w-full flex justify-center">
+                                        <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">ВС
+                                        </p>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(week, weekIndex) in weeks" :key="weekIndex">
+                                <td v-for="(day, dayIndex) in week" :key="dayIndex">
+                                    <a class="px-2 py-2 cursor-pointer flex w-full justify-center hover:bg-pale-sky-200 rounded-full"
+                                        @click="selectDay(day)"
+                                        :class="{ 'bg-pale-sky-400 text-white rounded-full': isSelected(day) }">
+                                        <p class="text-base text-black dark:text-gray-100 font-medium">{{ day }}</p>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
-                <div class="w-full grid grid-cols-7 grid-rows-6 gap-px">
-                    <template v-for="day in daysInMonth" :key="day">
-                        <a v-if="day" :class="[
-                            'relative py-2 px-3',
-                            day.getMonth() === currentDate.getMonth() ? 'bg-white' : 'bg-gray-50 text-gray-500',
-                            { 'hover:bg-gray-100': day.getMonth() === currentDate.getMonth() },
-                        ]">
-                            <time :datetime="formatDate(day)">{{ day.getDate() }}</time>
-                        </a>
-                    </template>
+            <div class="md:py-8 py-5 md:px-16 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
+                <div class="px-4">
+                    <div class="border-b pb-4 border-gray-400 border-dashed">
+                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">9:00 AM</p>
+                        <a tabindex="0"
+                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Zoom
+                            call with design team</a>
+                        <p class="text-sm pt-2 leading-4 text-gray-600 dark:text-gray-300">Discussion on UX
+                            sprint and Wireframe review</p>
+                    </div>
+                    <div class="border-b pb-4 border-gray-400 border-dashed pt-5">
+                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">10:00 AM</p>
+                        <a tabindex="0"
+                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Orientation
+                            session with new hires</a>
+                    </div>
+                    <div class="border-b pb-4 border-gray-400 border-dashed pt-5">
+                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">9:00 AM</p>
+                        <a tabindex="0"
+                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Zoom
+                            call with design team</a>
+                        <p class="text-sm pt-2 leading-4 text-gray-600 dark:text-gray-300">Discussion on UX
+                            sprint and Wireframe review</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,8 +157,13 @@ definePageMeta({
 
 useHead({ title: "Групповые занятия" });
 
-const currentDate = new Date();
-const monthNames = [
+const today = new Date();
+let month = ref(today.getMonth());
+let year = ref(today.getFullYear());
+let selectedDay = ref(today.getDate());
+let selectedMonth = ref(today.getMonth());
+
+const monthNames = ref([
     "Январь",
     "Февраль",
     "Март",
@@ -70,42 +175,100 @@ const monthNames = [
     "Сентябрь",
     "Октябрь",
     "Ноябрь",
-    "Декабрь"
-];
-const currentMonth = monthNames[currentDate.getMonth()];
+    "Декабрь",
+]);
 
-const daysInMonth = ref([]);
-const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-let offset = firstDayOfMonth.getDay();
+const monthName = computed(() => {
+    return monthNames.value[month.value];
+});
 
-if (offset === 0) {
-    offset = 6;
-} else {
-    offset -= 1;
+const daysInMonth = computed(() => {
+    return new Date(year.value, month.value + 1, 0).getDate();
+});
+
+const firstDayOfMonth = computed(() => {
+    return (new Date(year.value, month.value, 1).getDay() + 6) % 7;
+});
+
+const weeks = computed(() => {
+    const weeks = [];
+    let day = 1;
+    let offset = firstDayOfMonth.value;
+    for (let i = 0; i < 6; i++) {
+        let week = [];
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < offset) {
+                week.push('');
+            } else if (day <= daysInMonth.value) {
+                week.push(day);
+                day++;
+            } else {
+                week.push('');
+            }
+        }
+        weeks.push(week);
+        if (day > daysInMonth.value) break;
+    }
+    return weeks;
+});
+
+function isToday(day) {
+    return day === today.getDate() && month.value === today.getMonth() && year.value === today.getFullYear();
 }
 
-const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
-let previousMonthDays = getDaysInMonth(previousMonth.getFullYear(), previousMonth.getMonth());
-for (let i = offset; i > 0; i--) {
-    daysInMonth.value.push(new Date(previousMonth.getFullYear(), previousMonth.getMonth(), previousMonthDays - i + 1));
+function isSelected(day) {
+    return day === selectedDay.value && month.value === selectedMonth.value && year.value === today.getFullYear();
 }
 
-for (let i = 1; i <= getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth()); i++) {
-    daysInMonth.value.push(new Date(currentDate.getFullYear(), currentDate.getMonth(), i));
+function selectDay(day) {
+    selectedDay.value = day;
+    selectedMonth.value = month.value;
 }
 
-const nextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
-for (let i = 1; daysInMonth.value.length < 42; i++) {
-    daysInMonth.value.push(new Date(nextMonth.getFullYear(), nextMonth.getMonth(), i));
+function prevMonth() {
+    if (month.value === 0) {
+        month.value = 11;
+        year.value--;
+    } else {
+        month.value--;
+    }
 }
 
-function getDaysInMonth(year, month) {
-    return new Date(year, month + 1, 0).getDate();
+function nextMonth() {
+    if (month.value === 11) {
+        month.value = 0;
+        year.value++;
+    } else {
+        month.value++;
+    }
 }
 
-function formatDate(date) {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-}
+const peoples = [{
+    id: 1,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+}, {
+    id: 2,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+}, {
+    id: 3,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+}, {
+    id: 4,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+}, {
+    id: 5,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+}, {
+    id: 6,
+    trainer: 'Lindsay Walton',
+    time: '20:00 - 21:00 22.02.2022',
+},]
+
 </script>
 
 <style scoped></style>

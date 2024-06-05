@@ -58,7 +58,6 @@
 
 <script setup lang="ts">
 const route = useRoute();
-console.log(route.path);
 import { ref } from "vue";
 
 const loginModalOpen = ref(false);

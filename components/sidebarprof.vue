@@ -48,14 +48,20 @@ const links = [
     },
     {
         label: "Групповые занятия",
-        icon: "i-heroicons-chart-bar",
+        icon: "i-heroicons-user-group-solid",
         to: `/groupclasses`,
         click: closeOpen,
     },
     {
         label: "Персональные занятия",
-        icon: "i-heroicons-shopping-bag-solid",
+        icon: "i-heroicons-user-circle-16-solid",
         to: "/soloclasses",
+        click: closeOpen,
+    },
+    {
+        label: "Абонементы",
+        icon: "i-heroicons-shopping-bag-solid",
+        to: "/subscriptions",
         click: closeOpen,
     },
 
