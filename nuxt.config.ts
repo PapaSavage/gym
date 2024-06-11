@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: false },
-    modules: ["@nuxt/ui", "@nuxtjs/google-fonts", "nuxt-vuefire"],
+    modules: ["@nuxt/ui", "@nuxtjs/google-fonts", "nuxt-vuefire", "@nuxt/eslint"],
     colorMode: {
         preference: "light",
     },

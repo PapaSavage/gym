@@ -1,23 +1,26 @@
 <template>
     <div
         class="flex items-center flex-col xl:flex-row md:justify-around py-8 px-4 h-screen animate__animated animate__fadeIn">
-        <div class="flex flex-col justify-between">
+        <div class="flex flex-col justify-between px-4" v-if="bookingsgroups.length > 0">
             <div class="text-center text-2xl pb-3">Тренировки, на которые вы записаны</div>
             <table class="w-full text-sm bg-white shadow-md rounded mb-4">
                 <tbody>
                     <tr class="border-b">
-                        <th class="text-left p-3 px-5">Name</th>
-                        <th class="text-left p-3 px-5">Time</th>
+                        <th class="text-left p-3 px-5">Трейнер</th>
+                        <th class="text-left p-3 px-5">Время</th>
                     </tr>
-                    <tr v-for="person in peoples" :key="person.id" class="border-b hover:bg-pale-sky-100">
-                        <td class="p-3 px-5">{{ person.trainer }}</td>
-                        <td class="p-3 px-5">{{ person.time }}</td>
+                    <tr v-for="booking in bookingsgroups" :key="booking.bookingClassId"
+                        class="border-b hover:bg-pale-sky-100">
+                        <td class="p-3 px-5">{{ booking.fio }}</td>
+                        <td class="p-3 px-5">{{ booking.dateStartedit }}</td>
                         <td class="p-3 px-5">
                             <button type="button"
+                                @click="isOpenModalCancel = true; selectedBookingCancel = booking.bookingClassId;"
                                 class="bg-black hidden sm:block hover:bg-transparent text-white font-semibold hover:text-black py-2 px-4 border border-black rounded transition duration-150 active:bg-pale-sky-200">
                                 Отменить
                             </button>
                             <button type="button"
+                                @click="isOpenModalCancel = true; selectedBookingCancel = booking.bookingClassId;"
                                 class="bg-black text-xs  block sm:hidden hover:bg-transparent text-white font-semibold hover:text-black py-2 px-3 border border-black rounded transition duration-150 active:bg-pale-sky-200">
                                 x
                             </button>
@@ -117,38 +120,70 @@
                     </table>
                 </div>
             </div>
-            <div class="md:py-8 py-5 md:px-16 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
-                <div class="px-4">
-                    <div class="border-b pb-4 border-gray-400 border-dashed">
-                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">9:00 AM</p>
+            <div class="md:py-8 py-5 md:px-12 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
+                <div class="px-4 flex flex-col gap-4">
+                    <div class="animate__animated animate__fadeIn border-b flex flex-col gap-2 border-gray-400 border-dashed"
+                        v-for="classday in classesbyday" v-if="classesbyday.length > 0">
+                        <p class="text-ыь font-light leading-3 text-gray-500 dark:text-gray-300">{{
+            classday.dateStartedit }}</p>
                         <a tabindex="0"
-                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Zoom
-                            call with design team</a>
-                        <p class="text-sm pt-2 leading-4 text-gray-600 dark:text-gray-300">Discussion on UX
-                            sprint and Wireframe review</p>
+                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100">{{
+            classday.name }}</a>
+                        <p class="text-sm leading-4 text-gray-600 dark:text-gray-300">{{ classday.description }}
+                        </p>
+                        <p class="text-xs text-gray-700">Количество мест: <span class="font-bold text-black">{{
+            classday.availableSpots
+        }}</span> / {{
+                classday.countPeople }}</p>
+                        <button type="button" @click="isOpenModalAdd = true; selectedBookingAdd = classday.classId;"
+                            class="btn__simple text-xs mb-2 self-end">
+                            Записаться
+                        </button>
                     </div>
-                    <div class="border-b pb-4 border-gray-400 border-dashed pt-5">
-                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">10:00 AM</p>
-                        <a tabindex="0"
-                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Orientation
-                            session with new hires</a>
-                    </div>
-                    <div class="border-b pb-4 border-gray-400 border-dashed pt-5">
-                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">9:00 AM</p>
-                        <a tabindex="0"
-                            class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Zoom
-                            call with design team</a>
-                        <p class="text-sm pt-2 leading-4 text-gray-600 dark:text-gray-300">Discussion on UX
-                            sprint and Wireframe review</p>
-                    </div>
+                    <div class="animate__animated animate__fadeIn" v-else>На этот день не назначено тренировок</div>
                 </div>
             </div>
         </div>
     </div>
+    <UModal v-model="isOpenModalCancel" :ui="{ container: 'flex min-h-full items-center justify-center text-center' }">
+        <UCard class="unbounded-font">
+            <template #header>
+                <div class="text-xl">Подтвердите действие</div>
+            </template>
+
+            <div class="text-base text-gray-600">Вы уверены что хотите удалить отменить эту тренировку?</div>
+
+            <template #footer>
+                <div class="flex flex-row justify-end gap-2">
+                    <button class="btn__simple_white" @click="isOpenModalCancel = false;">Отменить</button>
+                    <button class="btn__simple"
+                        @click="cancelBooking(selectedBookingCancel); isOpenModalCancel = false;">Подтвердить</button>
+                </div>
+            </template>
+        </UCard>
+    </UModal>
+    <UModal v-model="isOpenModalAdd" :ui="{ container: 'flex min-h-full items-center justify-center text-center' }">
+        <UCard class="unbounded-font">
+            <template #header>
+                <div class="text-xl">Подтвердите действие</div>
+            </template>
+
+            <div class="text-base text-gray-600">Вы уверены что хотите записаться на эту тренировку?</div>
+
+            <template #footer>
+                <div class="flex flex-row justify-end gap-2">
+                    <button class="btn__simple_white" @click="isOpenModalAdd = false;">Отменить</button>
+                    <button class="btn__simple"
+                        @click="addBooking(selectedBookingAdd); isOpenModalAdd = false;">Подтвердить</button>
+                </div>
+            </template>
+        </UCard>
+    </UModal>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
+import { API } from "~/plugins/axios.js";
 
 definePageMeta({
     layout: "profile",
@@ -157,11 +192,29 @@ definePageMeta({
 
 useHead({ title: "Групповые занятия" });
 
+const user = useCurrentUser();
+const toast = useToast();
+
+const date = ref(null);
+
 const today = new Date();
+
+const bookingsgroups = ref({});
+const selectedBookingCancel = ref(null);
+const selectedBookingAdd = ref(null);
+const classesbyday = ref({});
+
+const isOpenModalCancel = ref(false);
+const isOpenModalAdd = ref(false);
+
 let month = ref(today.getMonth());
 let year = ref(today.getFullYear());
 let selectedDay = ref(today.getDate());
 let selectedMonth = ref(today.getMonth());
+
+get_user_bookings();
+selectDay(selectedDay.value);
+
 
 const monthNames = ref([
     "Январь",
@@ -223,6 +276,10 @@ function isSelected(day) {
 function selectDay(day) {
     selectedDay.value = day;
     selectedMonth.value = month.value;
+
+    date.value = year.value + '-' + (selectedMonth.value + 1) + '-' + selectedDay.value;
+
+    getClassesByDay(date.value);
 }
 
 function prevMonth() {
@@ -243,31 +300,94 @@ function nextMonth() {
     }
 }
 
-const peoples = [{
-    id: 1,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-}, {
-    id: 2,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-}, {
-    id: 3,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-}, {
-    id: 4,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-}, {
-    id: 5,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-}, {
-    id: 6,
-    trainer: 'Lindsay Walton',
-    time: '20:00 - 21:00 22.02.2022',
-},]
+function get_user_bookings() {
+    API.get(`BookingClasses/email/${user.value?.email}`)
+        .then(response => {
+            bookingsgroups.value = response.data;
+            for (let i = 0; i < bookingsgroups.value.length; i++) {
+                const dateStr = bookingsgroups.value[i].dateStart;
+                const date = new Date(dateStr);
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+
+                const newDateStr = `${hours}:${minutes} - ${hours + 1}:${minutes} ${day}-${month}-${year}`;
+                bookingsgroups.value[i].dateStartedit = newDateStr;
+            }
+            getClassesByDay(date.value);
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
+}
+
+function cancelBooking(BookingClassId) {
+    API.delete(`BookingClasses/${BookingClassId}`)
+        .then(response => {
+            toast.add({
+                title: "Вы отменили запись на занятие.",
+                timeout: 1000,
+                callback: () => {
+                    get_user_bookings();
+                    selectDay(selectedDay.value);
+                },
+            });
+
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
+}
+
+function addBooking(classId) {
+    const data = {
+        email: user.value?.email,
+        classId: classId
+    };
+    API.post('BookingClasses', data)
+        .then(response => {
+            toast.add({
+                title: "Вы записались на занятие.",
+                timeout: 1000,
+                callback: () => {
+                    get_user_bookings();
+                    selectDay(selectedDay.value);
+                },
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+function getClassesByDay(date) {
+    API.get(`Classes/date/${date}`)
+        .then(response => {
+            classesbyday.value = response.data.filter(classItem => classItem.availableSpots > 0);
+            for (let i = 0; i < classesbyday.value.length; i++) {
+                const dateStr = classesbyday.value[i].dateStart;
+                const date = new Date(dateStr);
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const newDateStr = `${hours}:${minutes}`;
+                classesbyday.value[i].dateStartedit = newDateStr;
+            }
+            if (bookingsgroups.value) {
+                const bookingsArray = Object.values(bookingsgroups.value);
+                classesbyday.value = classesbyday.value.filter(classItem => {
+                    return !bookingsArray.some(booking => {
+                        return (classItem.dateStart == booking.dateStart);
+                    });
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
+}
 
 </script>
 

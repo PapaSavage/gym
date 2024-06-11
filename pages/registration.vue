@@ -77,6 +77,7 @@ const state = reactive({
     password: undefined,
 });
 
+
 const { register } = actions();
 
 const handleSubmit = async (event: FormSubmitEvent<any>, state: any) => {
